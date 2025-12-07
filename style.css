@@ -1,0 +1,59 @@
+:root{
+  --paper-width-mm: 80mm;
+  --paper-min-h-mm: 150mm;
+  --card-height: 92px;
+  --bg: #ffffff;
+  --accent: #000000;
+  --font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* basics */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:var(--font-family);background:#efefef;color:var(--accent);-webkit-font-smoothing:antialiased}
+
+/* floating UI */
+.floating-card{
+  position:fixed;top:12px;left:50%;transform:translateX(-50%);
+  width:calc(min(980px,96%));z-index:1100;display:flex;justify-content:center}
+.card-inner{display:flex;gap:12px;align-items:center;padding:12px 16px;background:rgba(255,255,255,0.98);border-radius:10px;box-shadow:0 8px 26px rgba(0,0,0,0.08);border:1px solid rgba(0,0,0,0.06);width:100%}
+.question-block{display:flex;flex-direction:column}
+.q-title{font-size:12px;color:#666}
+.q-text{font-size:15px;font-weight:700}
+.reply-form{display:flex;gap:8px;align-items:center;flex:1}
+.reply-form input{flex:1;min-width:200px;padding:10px 12px;font-size:15px;border:1px solid #dcdcdc;border-radius:6px;background:white}
+.reply-form input::placeholder{
+  color:#b9b9b9;
+}
+.controls{display:flex;gap:8px;align-items:center}
+button{padding:9px 12px;border:0;background:#000;color:#fff;font-weight:700;border-radius:6px;cursor:pointer}
+.char-count{font-size:12px;color:#666}
+
+/* page & poster column */
+.paper-wrapper{
+  padding-top: calc(var(--card-height) + 26px);
+  display:flex;
+  justify-content:center;
+  padding-bottom:40px;
+}
+
+/* poster column: FIXED width 80mm, height dynamic (scrollable) */
+.paper{
+  width: var(--paper-width-mm);
+  max-width: calc(100% - 20px); /* safety on very small screens */
+  background: var(--bg);
+  border:1px solid #ddd;
+  box-shadow:0 4px 18px rgba(0,0,0,0.06);
+  position:relative;
+  overflow:visible;
+  padding:0;
+}
+
+/* svg fills width; the viewBox height is set by JS so svg scales correctly */
+.paper svg{display:block;width:100%;height:auto;background:var(--bg);shape-rendering:geometricPrecision;text-rendering:geometricPrecision}
+
+/* print */
+@media print {
+  .floating-card{display:none}
+  .paper{box-shadow:none;border:none;padding:0;margin:0}
+  @page{ size:80mm auto; margin:0; }
+}
