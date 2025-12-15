@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Typographic Poster Generator</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@400;700&family=Rubik+Glitch&family=Tilt+Neon&family=Bungee&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div id="bg-questions"></div>
   <header class="floating-card">
     <div class="card-inner">
       <div class="question-block">
@@ -14,10 +16,9 @@
         <div class="q-text">What did you find here without looking for it?</div>
       </div>
 
-      <form id="replyForm" class="reply-form" autocomplete="off" onsubmit="return false;">
+      <form id="replyForm" class="reply-form" autocomplete="off" >
         <input id="replyInput" maxlength="250" placeholder="type something…" />
         <div class="controls">
-          <button type="button" id="regenBtn">New</button>
           <button type="button" id="printBtn">Print</button>
           <span id="charCount" class="char-count">0/250</span>
         </div>
